@@ -89,6 +89,15 @@
   </audio>
   
   <button id="toggleMusic">🔈</button>
+  <button onclick="playMusic()" style="position:fixed;top:20px;right:20px;z-index:999;">🔊 Play Music</button>
+
+  <script>
+  function playMusic() {
+    const audio = document.getElementById("background-music");
+    audio.play();
+  }
+</script>
+
   
   <script>
     const bgMusic = document.getElementById("bgMusic");
