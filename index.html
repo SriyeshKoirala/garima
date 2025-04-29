@@ -83,13 +83,24 @@
     });
   </script>
   
-  <audio id="bgMusic" autoplay loop preload="auto">
-    <source src="daisybell.mp3" type="audio/mpeg">
-    Your browser does not support the audio tag.
-  </audio>
-  
+ <audio id="background-music" loop>
+  <source src="daisybell.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+  <button onclick="playMusic()" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+">🔊 Play Music</button>
   <button id="toggleMusic">🔈</button>
-  <button onclick="playMusic()" style="position:fixed;top:20px;right:20px;z-index:999;">🔊 Play Music</button>
 
   <script>
   function playMusic() {
@@ -125,6 +136,14 @@
       cursor: pointer;
     }
   </style>
-  
+  <script>
+    function playMusic() {
+        const audio = document.getElementById("background-music");
+        audio.play().catch(function(error) {
+            console.log("Autoplay failed:", error);
+        });
+    }
+</script>
+
 </body>
 </html>
