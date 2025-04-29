@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    min-height: 100vh;
+    position: relative;
+}
+
+.floating {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    animation: float 20s linear infinite;
+    z-index: 0;
+}
+
+.letter-container {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    line-height: 1.8;
+    color: #444;
+    overflow: auto;
+}
+
+.letter-container h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    text-align: center;
+    color: #c94f7c;
+    margin-bottom: 20px;
+}
+
+.extras {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.extras button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff85a2;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.extras button:hover {
+    background: #e76d8b;
+}
+
+@keyframes float {
+    0% {
+        top: -10%;
+        left: calc(100% * var(--x));
+        transform: scale(0.5);
+    }
+    100% {
+        top: 110%;
+        left: calc(100% * var(--x));
+        transform: scale(1);
+    }
+}
+
+#mute-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#mute-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.slideshow {
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slides {
+    width: 100%;
+    height: auto;
+    display: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* MEMORY BOX MODAL STYLES */
+.memory-box {
+    display: none; /* Hide initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 240, 245, 0.8); /* Soft pinkish background */
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.memory-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    max-width: 350px;
+    width: 90%;
+}
+
+.memory-content h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #c94f7c;
+    margin-bottom: 20px;
+}
+
+/* Close button inside memory box */
+.memory-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff85a2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.memory-content button:hover {
+    background: #e76d8b;
+}
+

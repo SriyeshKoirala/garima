@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Dearest Garima</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="loveletter.css"> 
+</head>
+<body>
+
+    <!-- Floating hearts and daisies -->
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" class="floating" style="--x: 0.2;">
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" class="floating" style="--x: 0.7;">
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" class="floating" style="--x: 0.4;">
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" class="floating" style="--x: 0.9;">
+
+    <audio autoplay loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/24/audio_4fa44e7c71.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="letter-container">
+        <h1>To My Dearest Garima 🌸</h1>
+        <p>
+            From the very first time we spoke, I found you so beautiful.<br><br>
+            Your smile, your kindness, your weird little habits they all became parts of the story I never want to stop writing.<br><br>
+            You are the daisy in my garden, the warmth in my heart, and the reason I smile even on the toughest days.<br><br>
+            I will always love you baby. I want to be with you on your best days and specially on your worst days.<br><br>
+            I will try to be better for you and myself so that we can have a wonderful future ahead of us. <br><br>
+            Thank you for being the way you are garu.<br><br>
+            Forever yours,<br>
+            ❤️ Sriyesh
+        </p>
+
+        <div class="extras">
+            <button onclick="showReasons()">See Why I Love You</button>
+            <button onclick="showMemories()">Open Our Memory Box</button>
+        </div>
+    </div>
+
+    
+<!-- Memory Box Modal -->
+<div id="memory-box" class="memory-box">
+    <div class="memory-content">
+        <h2>Our Memory Box 💌</h2>
+
+        <div class="slideshow">
+            <img class="slides" src="daisy.jfif" alt="Memory 1">
+            <img class="slides" src="img13.jpeg" alt="Memory 1">
+            <img class="slides" src="img12.jpeg" alt="Memory 1">
+            <img class="slides" src="img11.jpeg" alt="Memory 1">
+            <img class="slides" src="img10.jpeg" alt="Memory 1">
+            <img class="slides" src="img9.jpeg" alt="Memory 1">
+            <img class="slides" src="img8.jpeg" alt="Memory 1">
+            <img class="slides" src="img7.jpeg" alt="Memory 1">
+            <img class="slides" src="img6.jpeg" alt="Memory 1">
+            <img class="slides" src="img5.jpeg" alt="Memory 1">
+            <img class="slides" src="img4.jpeg" alt="Memory 1">
+            <img class="slides" src="img3.jpeg" alt="Memory 1">
+            <img class="slides" src="img2.jpeg" alt="Memory 1">
+            <img class="slides" src="img1.jpeg" alt="Memory 1">
+            
+
+            
+        </div>
+
+        <button onclick="closeMemories()">Close</button>
+    </div>
+</div>
+
+
+
+    <script>
+        const reasons = [
+            "Your smile lights up everything ☀️",
+            "You always make my day better ❤️",
+            "You're smart, kind, and endlessly beautiful 💫",
+            "You understand me like no one else does 🫶",
+            "You're my home, my peace, my everything 🌼"
+        ];
+
+        function showReasons() {
+            alert(reasons[Math.floor(Math.random() * reasons.length)]);
+        }
+
+        function showMemories() {
+    const memoryBox = document.getElementById('memory-box');
+    memoryBox.style.display = 'flex';
+    memoryBox.classList.add('show'); // Add the animation class
+    startSlideshow();
+}
+
+
+function closeMemories() {
+    document.getElementById('memory-box').style.display = 'none';
+    stopSlideshow();
+}
+
+let slideIndex = 0;
+let slideInterval;
+
+function startSlideshow() {
+    const slides = document.getElementsByClassName('slides');
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    slideIndex = 0;
+    slides[slideIndex].style.display = 'block';
+    slideInterval = setInterval(() => {
+        slides[slideIndex].style.display = 'none';
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].style.display = 'block';
+    }, 2000); // Change image every 2 seconds
+}
+
+function stopSlideshow() {
+    clearInterval(slideInterval);
+}
+
+    </script>
+
+<audio id="background-music" autoplay loop>
+    <source src="Daisy Belle (Bicycle Built for Two) guitar cover.mp3" type="audio/mpeg">
+</audio>
+<audio id="memory-music">
+    <source src="https://cdn.pixabay.com/audio/2021/12/15/audio_40037f0708.mp3" type="audio/mpeg">
+  </audio>
+  
+
+<!-- Mute/Unmute Button -->
+<button id="mute-btn" onclick="toggleMute()">🔊</button>
+
+<script>
+    const audio = document.getElementById('background-music');
+    const muteButton = document.getElementById('mute-btn');
+
+    // Function to toggle mute/unmute
+    function toggleMute() {
+        if (audio.muted) {
+            audio.muted = false;
+            muteButton.textContent = '🔊'; // Change button text to "Unmute"
+        } else {
+            audio.muted = true;
+            muteButton.textContent = '🔈'; // Change button text to "Mute"
+        }
+    }
+</script>
+
+
+</body>
+</html>

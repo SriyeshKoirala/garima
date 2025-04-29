@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log in Form</title>
+  <link rel="stylesheet" href="daisyform.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<div class="flower-container" id="flowers"></div> <!-- Floating flowers -->
+
+<div class="wrapper">
+  <form id="loginForm">
+    <h1>A letter for someone important</h1>
+
+    <div class="input-box">
+      <input type="text" id="username" placeholder="Your name" required />
+      <i class='bx bxs-user'></i>
+    </div>
+
+    <div class="input-box">
+      <input type="password" id="password" placeholder="Password" required />
+      <i class='bx bxs-lock-alt'></i>
+    </div>
+
+    <div class="remember-forgot">
+      <label><input type="checkbox" />Remember me</label>
+      <a href="#" onclick="forgotPassword()">Forgot Password</a>
+    </div>
+
+    <button type="submit" class="btn">Enter</button>
+
+    <div class="register-link">
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>
+  </form>
+</div>
+
+<script>
+    // Floating flowers
+    const flowerContainer = document.getElementById("flowers");
+    const flowers = ['🌼', '❤️']; // Only Daisy and Red Heart
+  
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      flowerContainer.appendChild(flower);
+  
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
+    }
+  
+    setInterval(createFlower, 500);
+  
+    // Login 
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+  
+      if (username === "Garima" && password === "Daisy") {
+        window.location.href = "loveletter.html";
+      } else {
+        alert("Only the special one can enter 🌼");
+      }
+    });
+  
+    // Forgot Password 
+    function forgotPassword() {
+      alert("Hint: It's your favorite flower 🌸");
+    }
+  
+    // Register link 
+    document.querySelector(".register-link a").addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("Sorry, registration is closed. The heart has already been taken by the most special girl 💖");
+    });
+  </script>
+  
+  <audio id="bgMusic" autoplay loop preload="auto">
+    <source src="Daisy Belle (Bicycle Built for Two) guitar cover.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+  
+  <button id="toggleMusic">🔈</button>
+  
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+    const toggleBtn = document.getElementById("toggleMusic");
+  
+    let isMuted = false;
+    toggleBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      bgMusic.muted = isMuted;
+      toggleBtn.textContent = isMuted ? "🔇" : "🔈";
+    });
+  </script>
+  
+  <style>
+    #toggleMusic {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: rgba(255,255,255,0.6);
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+    }
+  </style>
+  
+</body>
+</html>
