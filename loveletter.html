@@ -122,29 +122,32 @@ function stopSlideshow() {
 <audio id="background-music" autoplay loop>
     <source src="daisybell.mp3" type="audio/mpeg">
 </audio>
-<audio id="memory-music">
-    <source src="https://cdn.pixabay.com/audio/2021/12/15/audio_40037f0708.mp3" type="audio/mpeg">
-  </audio>
+
   
 
 <!-- Mute/Unmute Button -->
 <button id="mute-btn" onclick="toggleMute()">🔊</button>
 
 <script>
-    const audio = document.getElementById('background-music');
-    const muteButton = document.getElementById('mute-btn');
+  const audio = document.getElementById('background-music');
+  const muteButton = document.getElementById('mute-btn');
 
-    // Function to toggle mute/unmute
-    function toggleMute() {
-        if (audio.muted) {
-            audio.muted = false;
-            muteButton.textContent = '🔊'; // Change button text to "Unmute"
-        } else {
-            audio.muted = true;
-            muteButton.textContent = '🔈'; // Change button text to "Mute"
-        }
-    }
+  // Try autoplay immediately
+  audio.play().catch(() => {
+    // If blocked, wait for any user interaction
+    const resumeAudio = () => {
+      audio.play().catch(err => console.log("Still blocked:", err));
+      document.removeEventListener("click", resumeAudio);
+    };
+    document.addEventListener("click", resumeAudio);
+  });
+
+  function toggleMute() {
+    audio.muted = !audio.muted;
+    muteButton.textContent = audio.muted ? '🔈' : '🔊';
+  }
 </script>
+
 
 
 </body>
